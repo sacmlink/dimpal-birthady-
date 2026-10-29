@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Dimpal ♡</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>body{background:#fef7f5}.hand{font-family:'Dancing Script',cursive}.page{display:none;min-height:100vh}.page.active{display:flex}@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}.dance{animation:float .8s infinite}#catCanvas{width:130px;height:130px;display:block;margin:auto}</style>
+</head>
+<body>
+<div id="p1" class="page active flex-col items-center justify-center p-6 text-center">
+<div style="background:#fde8e0;font-size:10px;letter-spacing:2.5px;padding:6px 14px;border-radius:20px">♡ MADE WITH SO MUCH LOVE</div>
+<h1 class="hand text-[42px] font-bold mt-6">Hello Cutieee</h1>
+<p class="hand text-[23px] text-[#ff8fa3]">happy birthday ♡</p>
+<div class="dance mt-2"><canvas id="catCanvas" width="250" height="250"></canvas><img id="fallbackCat" src="https://media.tenor.com/2uyENRuvV-0AAAAi/cute-cat.gif" class="hidden w-[110px] mx-auto"></div>
+<video id="catVideo" autoplay loop muted playsinline style="position:absolute;opacity:0;width:1px;height:1px"><source src="cat.mp4" type="video/mp4"></video>
+<div onclick="openL()" class="relative mt-6 w-[310px] h-[195px]"><div class="absolute inset-0 bg-[#fde8e0] rounded-[14px] border-2 border-[#e9c9bb]"></div><div class="absolute left-2 right-2 bottom-2 top-[42%] bg-white rounded-[10px] flex flex-col items-center justify-center"><p class="hand text-[19px]">For My Dimpal ♡</p><p style="font-size:8px;letter-spacing:2px;color:#c9a89a">A LETTER FOR YOU</p></div><div id="seal" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[56px] h-[56px] bg-[#c94c4c] rounded-full flex items-center justify-center text-white text-2xl">♡</div></div>
+<p style="font-size:10px;letter-spacing:2px;color:#c9a89a" class="mt-4">TAP THE SEAL TO OPEN ♡</p>
+</div>
+<div id="p2" class="page flex-col items-center p-6 bg-[#fdf6f0]"><div class="bg-white w-full max-w-[360px] rounded-[28px] p-7 shadow-xl mt-6 text-center"><img src="photo1.jpg" class="w-20 h-20 rounded-full mx-auto -mt-12 border-4 border-white shadow object-cover"><h1 class="hand text-4xl mt-4">Happy Birthday Dimpal ♡</h1><p class="text-sm text-[#555] mt-4">Meri pyaari Dimpal, you are the cutest! Love you so much ♡</p><div class="flex gap-3 mt-6 overflow-auto"><img src="photo1.jpg" class="min-w-[200px] h-[250px] object-cover rounded-2xl"><img src="photo2.jpg" class="min-w-[200px] h-[250px] object-cover rounded-2xl"></div></div></div>
+<script>
+const v=document.getElementById('catVideo'),c=document.getElementById('catCanvas'),x=c.getContext('2d',{willReadFrequently:true}),f=document.getElementById('fallbackCat');
+function start(){function loop(){if(v.paused||v.ended)return;x.clearRect(0,0,c.width,c.height);x.drawImage(v,0,0,c.width,c.height);let img=x.getImageData(0,0,c.width,c.height);for(let i=0;i<img.data.length;i+=4){let r=img.data[i],g=img.data[i+1],b=img.data[i+2];if(g>80&&g>r*1.15&&g>b*1.15){img.data[i+3]=0}}x.putImageData(img,0,0);requestAnimationFrame(loop)}requestAnimationFrame(loop)}
+v.addEventListener('playing',start);v.addEventListener('canplay',()=>{v.play();start()});document.addEventListener('click',()=>{v.play();start()},{once:true});v.addEventListener('error',()=>{c.style.display='none';f.classList.remove('hidden')});
+function openL(){document.getElementById('seal').style.transform='translate(-50%,-50%) scale(0)';setTimeout(()=>{document.getElementById('p1').classList.remove('active');document.getElementById('p2').classList.add('active')},400)}
+</script>
+</body>
+</html>
